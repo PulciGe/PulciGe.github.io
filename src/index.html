@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block index %}
+<a class="button" href="/index.html">Home</a>
+{% endblock %}
+{% block content %}
+<img class="center" alt="logo" src="/favicon.png">
+<section>
+    <header>
+        <div class="row">
+            <i>groups</i>
+            <h5>About PulciGe</h5>
+        </div>
+    </header>
+    {% include "divider.html" %}
+    <p>
+        <a href="{{ ctf_time }}" class="underline blue-text">PulciGe</a> is a Genoa-based CTF &
+        cybersecurity Team
+        founded in 2022 by a group of students of the <a href="https://unige.it/it/"
+            class="underline blue-text">University of
+            Genoa</a>, and
+        interested in cybersecurity.
+    </p>
+    <p>
+        The team is located in <a href="https://en.wikipedia.org/wiki/Genoa" class="underline blue-text">Genoa</a>
+        (Genova in
+        Italian), Italy.
+    </p>
+    <p>
+        Our name comes from Pulci, Abbreviation of Pulcini(Chicks).
+    </p>
+    <p>
+        Our goal is to participate as a Team in CTFs.
+    </p>
+    <p>
+        If you want to get in touch with us you can write us an email at <a href="mailto:pulcige@gmail.com"
+            class="underline blue-text">pulcige@gmail.com</a> or
+        through
+        one of our social networks below.
+    </p>
+    <!--<p>
+        The faculty point of contact is not the bald Alessandro Armando (Computer Security
+        Laboratory).
+    </p>-->
+</section>
+<div class="medium-space"></div>
+<section>
+    <header>
+        <div class="row">
+            <i>military_tech</i>
+            <h5>About CTFs</h5>
+        </div>
+    </header>
+    {% include "divider.html" %}
+    <p>
+        Capture-The-Flags (better known as CTFs) are competitions where hackers have to solve
+        cybersecurity problems (jeopardy style) and/or capture and defend computer systems
+        (attack-defense style). These competitions consist of a series of challenges that vary in their
+        degree of difficulty, and that require participants to exercise different skillsets to solve.
+    </p>
+    <p>
+        "Flags" are bits of data that prove you have completed a given task. Players can be lone wolves
+        who attempt the various challenges by themselves, or they can work with others to attempt to
+        score the highest number of points as a team. CTF events are usually timed, and the points are
+        totaled once the time has expired. The winning player/team will be the one that secured the
+        highest score.
+    </p>
+</section>
+{% endblock %}

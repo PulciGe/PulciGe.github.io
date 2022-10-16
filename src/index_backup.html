@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/beercss@2.2.11/dist/cdn/beer.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/beercss@2.2.11/dist/cdn/beer.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@0.0.10/dist/cdn/material-dynamic-colors.min.js"></script>
+    <title>PulciGe</title>
+</head>
+
+<body lang="en">
+    <header>
+        <nav>
+            <button class="circle transparent left">
+                <img class="responsive" alt="logo" src="favicon.png">
+            </button>
+            <div class="max center">
+                <div class="tabs large-width center">
+                    <a class="active" data-ui="#home">Home</a>
+                    <a data-ui="#members">Members</a>
+                    <a data-ui="#history">CTFs</a>
+                </div>
+            </div>
+
+            <button class="circle transparent">
+                <i>attach_file</i>
+            </button>
+            <button class="circle transparent">
+                <i>today</i>
+            </button>
+            <button class="circle transparent">
+                <i>more_vert</i>
+            </button>
+        </nav>
+    </header>
+
+    <div>
+        <div class="page padding left active" id="home">
+            <main class="responsive">
+                <img class="center" alt="logo" src="favicon.png">
+                <section>
+                    <header>
+                        <div class="row">
+                            <i>groups</i>
+                            <h5>About PulciGe</h5>
+                        </div>
+                    </header>
+                    <div class="divider"></div>
+                    <p>
+                        <a href="https://ctftime.org/team/202484" class="blue-text">PulciGe</a> is a Genoa-based CTF &
+                        cybersecurity Team
+                        founded in 2022 by a group of students of the <a href="https://unige.it/it/"
+                            class="blue-text">University of
+                            Genoa</a>, and
+                        interested in cybersecurity.
+                    </p>
+                    <p>
+                        The team is located in <a href="https://en.wikipedia.org/wiki/Genoa" class="blue-text">Genoa</a>
+                        (Genova in
+                        Italian), Italy.
+                    </p>
+                    <p>
+                        Our name comes from Pulci, Abbreviation of Pulcini(Chicks).
+                    </p>
+                    <p>
+                        Our goal is to participate as a Team in CTFs.
+                    </p>
+                    <p>
+                        If you want to get in touch with us you can write us an email at <a
+                            href="mailto:pulcige@gmail.com" class="blue-text">pulcige@gmail.com</a> or
+                        through
+                        one of our social networks below.
+                    </p>
+                    <!--<p>
+                        The faculty point of contact is not the bald Alessandro Armando (Computer Security
+                        Laboratory).
+                    </p>-->
+                </section>
+                <section>
+                    <header>
+                        <div class="row">
+                            <i>military_tech</i>
+                            <h5>About PulciGe</h5>
+                        </div>
+                    </header>
+                    <div class="divider"></div>
+                    <p>
+                        Capture-The-Flags (better known as CTFs) are competitions where hackers have to solve
+                        cybersecurity problems (jeopardy style) and/or capture and defend computer systems
+                        (attack-defense style). These competitions consist of a series of challenges that vary in their
+                        degree of difficulty, and that require participants to exercise different skillsets to solve.
+                    </p>
+                    <p>
+                        "Flags" are bits of data that prove you have completed a given task. Players can be lone wolves
+                        who attempt the various challenges by themselves, or they can work with others to attempt to
+                        score the highest number of points as a team. CTF events are usually timed, and the points are
+                        totaled once the time has expired. The winning player/team will be the one that secured the
+                        highest score.
+                    </p>
+                </section>
+            </main>
+        </div>
+        <div class="page padding left" id="members">
+            <main class="responsive">
+                <section>
+                    <header>
+                        <div class="row">
+                            <i>military_tech</i>
+                            <h5>Members</h5>
+                        </div>
+                    </header>
+                    <div class="divider"></div>
+                </section>
+                <section>
+                    <header>
+                        <div class="row">
+                            <i>military_tech</i>
+                            <h5>Founders</h5>
+                        </div>
+                    </header>
+                    <div class="grid">
+                        <div class="l3 m6 s12">
+                            <article class="no-padding round">
+                                <img class="responsive small top-round" alt="ribba" src="members/ludof63.jpg">
+                                <div class="padding">
+                                    <h5>Ludovico Capiaghi</h5>
+                                    <nav>
+                                        <a class="button circle transparent"
+                                            href="https://avatars.githubusercontent.com/u/74011798?v=4"
+                                            target="_blank"><svg height="32" aria-hidden="true" viewbox="0 0 16 16"
+                                                version="1.1" width="32" data-view-component="true"
+                                                class="octicon octicon-mark-github v-align-middle">
+                                                <path fill-rule="evenodd"
+                                                    d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z">
+                                                </path>
+                                            </svg>
+                                        </a>
+                                    </nav>
+                                </div>
+                            </article>
+                        </div>
+                        <div class="l3 m6 s12">
+                            <article class="no-padding round">
+                                <img class="responsive small top-round" alt="ribba"
+                                    src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Frubrica.unige.it%2Fstatic%2Ffoto%2FVUZBWlNr.jpg%3F1625789308.8673&f=1&nofb=1&ipt=5d446695455677f06c6f3312f54ca6ec01b17b39fbe67d7da2586aaf60b663c4&ipo=images">
+                                <div class="padding">
+                                    <h5>Title</h5>
+                                    <p>Lghg</p>
+                                    <nav>
+                                        <button class="round">Button</button>
+                                    </nav>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                </section>
+                <section>
+                    <header>
+                        <div class="row">
+                            <i>military_tech</i>
+                            <h5>Inactive</h5>
+                        </div>
+                    </header>
+                    <div class="divider"></div>
+                </section>
+            </main>
+        </div>
+        <div class="page padding left" id="history">
+            <section>
+                <header>
+                    <div class="row">
+                        <i>flag</i>
+                        <h5>2022 CTFs</h5>
+                    </div>
+                </header>
+                <div class="divider"></div>
+            </section>
+        </div>
+    </div>
+
+    <footer class="fixed bottom">
+        <nav>
+            <button class="circle transparent">
+                <i>check_box_filled</i>
+            </button>
+            <button class="circle transparent">
+                <i>brush</i>
+            </button>
+            <button class="circle transparent">
+                <i>mic</i>
+            </button>
+            <button class="circle transparent">
+                <i>image</i>
+            </button>
+            <div class="max"></div>
+            <button class="square round extra primary">
+                <i>add</i>
+            </button>
+        </nav>
+    </footer>
+</body>
+
+</html>

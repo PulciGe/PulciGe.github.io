@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block members %}
+<a class="button" href="/members.html">Members</a>
+{% endblock %}
+{% block content %}
+<section>
+    <header>
+        <div class="row">
+            <i>groups</i>
+            <h5>Members</h5>
+        </div>
+    </header>
+    {% include "divider.html" %}
+    <div class="grid">
+        {% for member in team.members %}
+        <div class="l3 m6 s12">
+            <article class="border round padding">
+                <div class="row">
+                    <img class="circle large border" alt="{{ member.username }}'s photo" src="{{ member.image }}">
+                    <div class="max">
+                        <h5>{{ member.username}}</h5>
+                    </div>
+                </div>
+                <nav>
+                    {% for website in member.websites %}
+                    <a class="button circle transparent small" href="{{ website }}" target="_blank">
+                        <i class="fa {{website | get_logo}}"></i>
+                    </a>
+                    {% endfor %}
+                </nav>
+            </article>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

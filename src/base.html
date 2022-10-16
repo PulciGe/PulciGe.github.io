@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/beercss@2.2.11/dist/cdn/beer.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/beercss@2.2.11/dist/cdn/beer.min.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@0.0.10/dist/cdn/material-dynamic-colors.min.js"></script>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <title>PulciGe</title>
+    <style>
+        .fa {
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body lang="en">
+    <header>
+        <nav>
+            <a class="button circle transparent left" href="/">
+                <img class="responsive" alt="logo" src="{{ favicon }}">
+            </a>
+            <div class="max">
+                {% block index %}
+                <a class="button transparent" href="/index.html">Home</a>
+                {% endblock %}
+                {% block members %}
+                <a class="button transparent" href="/members.html">Members</a>
+                {% endblock %}
+                {% block history %}
+                <a class="button transparent" href="/history.html">History</a>
+                {% endblock %}
+            </div>
+
+            <a class="button circle transparent" href="https://ctftime.org/team/202484" target="_blank">
+                <i>flag</i>
+            </a>
+            <a class="button circle transparent" href="mailto:pulcige@gmail.com">
+                <i>mail</i>
+            </a>
+        </nav>
+    </header>
+
+    <main class="responsive">
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+
+</html>
