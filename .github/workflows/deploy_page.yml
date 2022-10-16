@@ -1,0 +1,40 @@
+name: "Upload GitHub Pages artifact"
+description: "A composite action that prepares your static assets to be deployed to GitHub Pages"
+runs:
+    permissions:
+        pages: write # to deploy to Pages
+        id-token: write # to verify the deployment originates from an appropriate source
+
+    # Deploy to the github-pages environment
+    environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+        - uses: actions/checkout@v3
+        - uses: actions/setup-python@v4
+          with:
+              python-version: "3.10"
+        - name: Run image
+          uses: abatilo/actions-poetry@v2
+        - name: View poetry --help
+          run: poetry run python -m pulcige build
+        - name: Archive artifact
+          run: |
+              tar \
+                --dereference --hard-dereference \
+                --directory .out \
+                -cvf "$RUNNER_TEMP/artifact.tar" \
+                --exclude=.git \
+                --exclude=.github \
+                .
+
+        - name: Upload artifact
+          uses: actions/upload-artifact@main
+          with:
+              name: github-pages
+              path: ${{ runner.temp }}/artifact.tar
+
+        - name: Deploy to GitHub Pages
+          id: deployment
+          uses: actions/deploy-pages@v1
