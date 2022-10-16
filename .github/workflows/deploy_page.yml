@@ -23,7 +23,9 @@ jobs:
                   python-version: "3.10"
             - name: Run image
               uses: abatilo/actions-poetry@v2
-            - name: View poetry --help
+            - name: Install dependencies
+              run: poetry install
+            - name: Build
               run: poetry run python -m pulcige build
             - name: Archive artifact
               run: |
