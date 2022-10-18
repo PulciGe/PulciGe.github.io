@@ -25,7 +25,7 @@ jobs:
             - name: Run image
               uses: abatilo/actions-poetry@v2
             - name: Install dependencies
-              run: poetry install
+              run: poetry install --no-dev
             - name: Build
               run: poetry run python -m pulcige build
             - name: Archive artifact
