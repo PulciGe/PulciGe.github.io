@@ -1,7 +1,4 @@
 {% extends "base.html" %}
-{% block history %}
-<a class="button" href="/history.html">History</a>
-{% endblock %}
 {% block content %}
 {% for year,events in team.history.items() | sort(attribute='0') %}
 <section>

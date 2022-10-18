@@ -1,6 +1,6 @@
 from os import makedirs, remove, stat, listdir
 from os.path import join, isdir
-from shutil import copyfile, rmtree
+from shutil import rmtree
 from time import sleep
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from pulcige.ctftime import USER_PAGE, TeamInfo, get_team, TEAM_PAGE
@@ -23,8 +23,6 @@ DEFAULT_LOGO = "fa-link"
 
 OUT_DIR = ".out"
 SRC_DIR = "src"
-SRC_FAVICON = join(SRC_DIR, "favicon.png")
-OUT_FAVICON = join(OUT_DIR, "favicon.png")
 
 
 def render(team: TeamInfo):
@@ -33,7 +31,11 @@ def render(team: TeamInfo):
             template = env.get_template(page)
             f.write(
                 template.render(
-                    team=team, ctf_time=TEAM_PAGE, favicon="favicon.png", logos=LOGOS
+                    team=team,
+                    ctf_time=TEAM_PAGE,
+                    favicon=team.logo,
+                    logos=LOGOS,
+                    page=page,
                 )
             )
 
@@ -52,11 +54,10 @@ def setup() -> TeamInfo:
             rmtree(file)
         else:
             remove(file)
-    copyfile(SRC_FAVICON, OUT_FAVICON)
     team = get_team()
     for member in team.members:
         if member.image is None:
-            member.image = "/favicon.png"
+            member.image = team.logo
         member.websites.insert(0, USER_PAGE.format(member.id))
     return team
 

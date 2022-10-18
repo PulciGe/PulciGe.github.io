@@ -1,6 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass
 from datetime import date, datetime
+from typing import TypeVar
 from httpx import get
 from bs4 import BeautifulSoup, Tag
 
@@ -28,11 +29,14 @@ def get_soup(url: str) -> BeautifulSoup:
     return BeautifulSoup(content.content, features="html.parser")
 
 
+T = TypeVar("T")
+
+
 def get_members() -> list[Member]:
     soup = get_soup(TEAM_PAGE)
-    div: Tag = soup.find("div", {"id": "recent_members"}).table  # type: ignore
-    trs = div.find_all("tr")
-    return [int(tr.td.a["href"].split("/")[2]) for tr in trs]
+    div: Tag = soup("div", {"id": "recent_members"})[0]("table")[0]
+    trs = div("tr")
+    return [int(tr("td")[0]("a")[0]["href"].split("/")[2]) for tr in trs]
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
@@ -60,12 +64,14 @@ def extract_image_url(tag: Tag) -> str:
 
 def get_user(id: int) -> UserInfo:
     soup = get_soup(USER_PAGE.format(id))
-    div = soup.find("div", {"class": "span10"})
-    username: str = soup.find("div", {"class": "page-header"}).h2.text  # type: ignore
-    image_div: Tag = soup.find("div", {"class": "span2"})  # type: ignore
-    image: str = MEDIA_BASE.format(image_div.img["src"]) if image_div.img is not None else None  # type: ignore
-    ps: list[Tag] = div.find_all("p")[2:]  # type: ignore
-    websites: list[str] = [extract_image_url(p) for p in ps]  # type: ignore
+    div = soup("div", {"class": "span10"})[0]
+    username: str = soup("div", {"class": "page-header"})[0]("h2")[0].text
+    image_div: Tag = soup("div", {"class": "span2"})[0]
+    image: str | None = (
+        MEDIA_BASE.format(image_div("img")[0]["src"]) if image_div("img") else None
+    )
+    ps: list[Tag] = div("p")[2:]
+    websites: list[str] = [extract_image_url(p) for p in ps]
     print(username, websites)
     return UserInfo(username=username, image=image, websites=websites, id=id)
 
@@ -76,12 +82,12 @@ def get_history() -> dict[int, list[Event]]:
     result: dict[int, list[Event]] = {}
     for year in range(START_YEAR, current_year + 1):
         result[year] = []
-        trs: list[Tag] = soup.find("div", {"id": f"rating_{year}"}).find_all("tr")[1:]  # type: ignore
+        trs: list[Tag] = soup("div", {"id": f"rating_{year}"})[0]("tr")[1:]
         for tr in trs:
-            place = int(tr.find("td", {"class": "place"}).text)  # type: ignore
-            a = tr.find_all("td")[2].a  # type: ignore
-            name: str = a.text  # type: ignore
-            id = int(a["href"].split("/")[2])  # type: ignore
+            place = int(tr("td", {"class": "place"})[0].text)
+            a = tr("td")[2]("a")[0]
+            name: str = a.text
+            id = int(a["href"].split("/")[2])
             d = get_event_date(id)
             result[year].append(
                 Event(name=name, id=id, rank=place, date=d, logo=get_event_logo(id))

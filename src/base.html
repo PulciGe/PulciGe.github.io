@@ -10,8 +10,9 @@
     <script src="https://cdn.jsdelivr.net/npm/beercss@2.2.11/dist/cdn/beer.min.js"></script>
     <script
         src="https://cdn.jsdelivr.net/npm/material-dynamic-colors@0.0.10/dist/cdn/material-dynamic-colors.min.js"></script>
-    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="icon" type="image/png" href="{{ favicon }}">
     <title>PulciGe</title>
+    <meta name="description" content="PulciGe's homepage">
     <style>
         .fa {
             font-size: 20px;
@@ -22,19 +23,30 @@
 <body lang="en">
     <header>
         <nav>
-            <a class="button circle transparent left" href="/">
-                <img class="responsive" alt="logo" src="{{ favicon }}">
-            </a>
-            <div class="max">
-                {% block index %}
-                <a class="button transparent" href="/index.html">Home</a>
-                {% endblock %}
-                {% block members %}
-                <a class="button transparent" href="/members.html">Members</a>
-                {% endblock %}
-                {% block history %}
-                <a class="button transparent" href="/history.html">History</a>
-                {% endblock %}
+            <div class="m l row max">
+                <button class="circle transparent left">
+                    <img class="responsive" alt="small chick with a flag" src="{{ favicon }}">
+                </button>
+                <div class="max">
+                    {% if page=="index.html" %}
+                    <a class="button" href="/">Home</a>
+                    {% else %}
+                    <a class="button transparent" href="/">Home</a>
+                    {% endif %}
+                    {% if page=="members.html" %}
+                    <a class="button" href="/members.html">Members</a>
+                    {% else %}
+                    <a class="button transparent" href="/members.html">Members</a>
+                    {% endif %}
+                    {% if page=="history.html" %}
+                    <a class="button" href="/history.html">History</a>
+                    {% else %}
+                    <a class="button transparent" href="/history.html">History</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="s max">
+                <button class="transparent circle" data-ui="#navbar"><i>menu</i></button>
             </div>
 
             <a class="button circle transparent" href="https://ctftime.org/team/202484" target="_blank">
@@ -50,6 +62,32 @@
         {% block content %}
         {% endblock %}
     </main>
+
+    <div class="modal left" id="navbar">
+        <header class="fixed">
+            <nav>
+                <button class="transparent circle" data-ui="#navbar">
+                    <i>close</i>
+                </button>
+                <h5 class="max">PulciGe</h5>
+            </nav>
+        </header>
+        {% if page=="index.html" %}
+        <a class="row round primary" href="/"><span>Home</span></a>
+        {% else %}
+        <a class="row round" href="/"><span>Home</span></a>
+        {% endif %}
+        {% if page=="members.html" %}
+        <a class="row round primary" href="/members.html"><span>Members</span></a>
+        {% else %}
+        <a class="row round" href="/members.html"><span>Members</span></a>
+        {% endif %}
+        {% if page=="history.html" %}
+        <a class="row round primary" href="/history.html"><span>History</span></a>
+        {% else %}
+        <a class="row round" href="/history.html"><span>History</span></a>
+        {% endif %}
+    </div>
 </body>
 
 </html>
