@@ -7,8 +7,9 @@ from bs4 import BeautifulSoup, Tag
 
 TEAM_ID = 202484
 
-JSON_API = f"https://ctftime.org/api/v1/teams/{TEAM_ID}/"
-TEAM_PAGE = f"https://ctftime.org/team/{TEAM_ID}"
+BASE_URL = "https://ctftime.org"
+JSON_API = f"{BASE_URL}/api/v1/teams/{TEAM_ID}/"
+TEAM_PAGE = f"{BASE_URL}/team/{TEAM_ID}"
 USER_PAGE = "https://ctftime.org/user/{}"
 MEDIA_BASE = "https://ctftime.org{}"
 START_YEAR = 2022
@@ -18,7 +19,10 @@ EVENT_SITE = "https://ctftime.org/event/{}"
 
 def get_logo_url() -> str:
     api = get(JSON_API).json()
-    return api["logo"]
+    assert isinstance(api, dict)
+    result = api["logo"]
+    assert isinstance(result, str)
+    return result
 
 
 Member = int
@@ -97,12 +101,16 @@ def get_history() -> dict[int, list[Event]]:
 
 def get_event_date(id: int) -> date:
     api = get(EVENT_API.format(id)).json()
+    assert isinstance(api, dict)
+    assert isinstance(api["start"], str)
     return datetime.fromisoformat(api["start"]).date()
 
 
 def get_event_logo(id: int) -> str:
-    api = get(EVENT_API.format(id)).json()
-    return api["logo"]
+    soup = get_soup(EVENT_SITE.format(id))
+    img = soup("img")[3]
+    assert img is not None
+    return BASE_URL + img["src"]
 
 
 @dataclass(frozen=True, slots=True, kw_only=True)
