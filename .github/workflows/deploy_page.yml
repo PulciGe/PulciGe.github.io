@@ -1,4 +1,4 @@
-name: "Upload GitHub Pages artifact"
+name: "Website deploy"
 
 on:
     push:
